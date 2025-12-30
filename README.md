@@ -42,8 +42,6 @@ The focus is on **backend architecture, integration patterns, and automation**, 
 
 - Architecture: `docs/ARCHITECTURE.md`
 - Data model: `docs/DATA_MODEL.md`
-- Runbook: `docs/RUNBOOK.md`
-- Technical decisions: `docs/DECISIONS.md`
 
 ---
 
