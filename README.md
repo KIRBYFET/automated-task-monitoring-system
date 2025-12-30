@@ -1,4 +1,4 @@
-# Sistema Automatizado de Monitoreo de Tareas
+# Sistema automatizado de monitoreo de tareas
 
 Proyecto de portafolio por **Kirbyfet**.
 
