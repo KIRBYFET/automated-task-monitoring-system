@@ -43,8 +43,8 @@ El enfoque está en la **arquitectura backend, patrones de integración y automa
 
 La documentación del diseño del sistema se encuentra en el directorio `docs/`:
 
-- Arquitectura: `docs/ARCHITECTURE.md`  
-- Modelo de datos: `docs/DATA_MODEL.md`  
+- Arquitectura: `Documentación/ARCHITECTURE.md`  
+- Modelo de datos: `Documentación/DATA_MODEL.md`  
 
 ---
 
@@ -103,8 +103,8 @@ The focus is on **backend architecture, integration patterns, and automation**, 
 
 ## 🏗️ Architecture & design
 
-- Architecture: `docs/ARCHITECTURE.md`
-- Data model: `docs/DATA_MODEL.md`
+- Architecture: `Documentación/ARCHITECTURE.md`
+- Data model: `Documentación/DATA_MODEL.md`
 
 ---
 
