@@ -1,6 +1,12 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
+
+# App data
 tasks.db
 automation/logs/
+
+# OS / editor
 .DS_Store
+.env
