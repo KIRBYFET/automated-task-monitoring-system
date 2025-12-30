@@ -45,8 +45,6 @@ La documentación del diseño del sistema se encuentra en el directorio `docs/`:
 
 - Arquitectura: `docs/ARCHITECTURE.md`  
 - Modelo de datos: `docs/DATA_MODEL.md`  
-- Runbook: `docs/RUNBOOK.md`  
-- Decisiones técnicas: `docs/DECISIONS.md`  
 
 ---
 
