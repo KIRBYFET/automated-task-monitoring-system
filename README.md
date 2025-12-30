@@ -60,6 +60,10 @@ La documentación del diseño del sistema se encuentra en el directorio `docs/`:
 **Kirbyfet**  
 ---
 ---
+
+
+
+
 # Automated Task Monitoring System
 
 Portfolio project by **Kirbyfet**.
