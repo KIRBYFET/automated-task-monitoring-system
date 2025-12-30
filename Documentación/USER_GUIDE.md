@@ -71,20 +71,20 @@ automated-task-monitoring-system/
 ```bash
 git clone https://github.com/KIRBYFET/automated-task-monitoring-system.git
 cd automated-task-monitoring-system
+---
 
 ### 2️⃣ Crear entorno virtual
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-
+---
 ### 3️⃣ Instalar dependencias
 pip install -r requirements.txt
-
+---
 ### ▶️ Ejecución del sistema
 Opción recomendada (automática)
 Levanta API + simulador + runner en ventanas separadas:
 powershell -ExecutionPolicy Bypass -File scripts\run_all.ps1
-
-
+---
 ### ▶️ Opción manual
 Levantar la API
 uvicorn app.main:app --reload
