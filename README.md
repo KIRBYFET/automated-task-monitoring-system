@@ -51,7 +51,7 @@ La documentación del diseño del sistema se encuentra en el directorio `docs/`:
 ## 📌 Estado del proyecto
 
 - ✔ Enfoque *documentation-first*  
-- ⏳ Implementación en progreso  
+- ✅ Funcional (API + simulador + runner)
 
 ---
 
@@ -111,7 +111,7 @@ The focus is on **backend architecture, integration patterns, and automation**, 
 ## 📌 Project status
 
 ✔ Documentation-first  
-⏳ Implementation in progress
+✅ Functional (API + simulator + runner)
 
 ---
 
