@@ -1,121 +1,221 @@
-# Sistema automatizado de monitoreo de tareas
+# Automated Task Monitoring System
 
-Proyecto de portafolio - **Kirbyfet**.
-
-Un sistema backend liviano que demuestra cómo las tareas operativas pueden ser ingeridas desde un sistema externo, monitoreadas automáticamente, escaladas cuando están vencidas y reportadas a través de una API REST.
-
----
-
-## 🎯 Propósito del proyecto
-
-Este proyecto simula un servicio backend interno del mundo real utilizado para:
-
-- Rastrear tareas operativas  
-- Integrarse con sistemas externos vía API  
-- Detectar automáticamente trabajo vencido  
-- Escalar prioridades según reglas de negocio  
-- Generar reportes y registros (logs)
-
-El enfoque está en la **arquitectura backend, patrones de integración y automatización**, no en la interfaz de usuario.
-
----
-
-## 🧩 Componentes del sistema
-
-### 1. API REST
-- Operaciones CRUD para tareas  
-- Endpoints de reportes  
-- Persistencia en SQLite  
-
-### 2. Simulador de Integración
-- Simula un sistema externo  
-- Emite eventos de tareas `CREATE` y `CLOSE` vía API  
-
-### 3. Ejecutor de Automatización
-- Monitorea tareas periódicamente  
-- Marca tareas como `OVERDUE`  
-- Escala la prioridad  
-- Escribe logs de automatización  
-
----
-
-## 🏗️ Arquitectura y diseño
-
-La documentación del diseño del sistema se encuentra en el directorio `docs/`:
-
-- Arquitectura: `Documentación/ARCHITECTURE.md`  
-- Modelo de datos: `Documentación/DATA_MODEL.md`  
+Backend en Python para el monitoreo de tareas, desarrollado con **FastAPI** y **SQLite**, que integra un **simulador de eventos** y un **runner automático** para la gestión de tareas vencidas.
 
 ---
 
 ## 📌 Estado del proyecto
 
-- ✔ Enfoque *documentation-first*  
-- ✅ Funcional (API + simulador + runner)
+✅ Funcional (API + simulador + runner)
+
+La API REST, el simulador de eventos y el runner de automatización se encuentran completamente operativos y pueden ejecutarse localmente.
 
 ---
 
-## 👤 Autor
+## 🧠 Descripción general
 
-**Kirbyfet**  
----
----
+Este proyecto implementa un sistema backend que permite:
 
-# Automated Task Monitoring System
+- Gestionar tareas mediante una API REST
+- Simular eventos provenientes de sistemas externos
+- Automatizar la detección de tareas vencidas
+- Escalar prioridades automáticamente
+- Registrar eventos en logs
+- Consultar reportes de tareas vencidas
 
-Portfolio project by **Kirbyfet**.
-
-A lightweight backend system that demonstrates how operational tasks can be ingested from an external system, monitored automatically, escalated when overdue, and reported through a REST API.
-
----
-
-## 🎯 Project purpose
-
-This project simulates a real-world internal backend service used to:
-- Track operational tasks
-- Integrate with external systems via API
-- Automatically detect overdue work
-- Escalate priority based on business rules
-- Generate reports and logs
-
-The focus is on **backend architecture, integration patterns, and automation**, not on UI.
+El objetivo principal del proyecto es **demostrar arquitectura backend, automatización e integración simulada**, con fines educativos y de portafolio profesional.
 
 ---
 
-## 🧩 System components
+## 🧩 Componentes del sistema
 
-1. **REST API**
-   - CRUD operations for tasks
-   - Reporting endpoints
-   - SQLite persistence
+### 🔹 API (FastAPI)
 
-2. **Integration Simulator**
-   - Simulates an external system
-   - Emits `CREATE` and `CLOSE` task events via API
+- CRUD completo de tareas
+- Persistencia en **SQLite**
+- Documentación interactiva mediante **Swagger UI**
 
-3. **Automation Runner**
-   - Periodically monitors tasks
-   - Marks tasks as `OVERDUE`
-   - Escalates priority
-   - Writes automation logs
+### 🔹 Simulador de integraciones
 
----
+- Simula un sistema externo que:
+  - crea tareas (`CREATE`)
+  - cierra tareas (`CLOSE`)
+- Se comunica con la API vía HTTP
 
-## 🏗️ Architecture & design
+### 🔹 Runner de automatización
 
-- Architecture: `Documentación/ARCHITECTURE.md`
-- Data model: `Documentación/DATA_MODEL.md`
-
----
-
-## 📌 Project status
-
-✔ Documentation-first  
-✅ Functional (API + simulator + runner)
+- Ejecuta ciclos periódicos
+- Detecta tareas vencidas
+- Marca tareas como `OVERDUE`
+- Registra eventos en archivos de log
+- Escala la prioridad cuando corresponde
 
 ---
 
-## 👤 Author
+## 📁 Estructura del proyecto
 
-**Kirbyfet**  
+```
+automated-task-monitoring-system/
+├── app/
+├── automation/
+├── integrations/
+├── scripts/
+├── Documentación/
+│   └── USER_GUIDE.md
+├── README.md
+├── requirements.txt
+├── LICENSE
+```
 
+## ⚙️ Requisitos
+
+- Python 3.10 o superior
+
+- Git
+
+- Sistema operativo Windows (incluye scripts .ps1)
+
+## 🚀 Instalación
+## 1️⃣ Clonar el repositorio
+Clona el repositorio y accede al directorio del proyecto:
+
+```
+git clone https://github.com/KIRBYFET/automated-task-monitoring-system.git
+cd automated-task-monitoring-system
+```
+
+## 2️⃣ Crear y activar entorno virtual (PowerShell)
+Crea un entorno virtual para aislar las dependencias del proyecto y actívalo:
+
+
+```
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+## 3️⃣ Instalar dependencias
+Instala todas las dependencias necesarias utilizando el archivo requirements.txt:
+
+
+```
+pip install -r requirements.txt
+```
+## ▶️ Ejecución del sistema
+El sistema puede ejecutarse de forma automática o manual, dependiendo del nivel de control deseado.
+
+✅ Opción recomendada (automática)
+Levanta la API, el simulador y el runner en ventanas separadas automáticamente:
+
+
+```
+powershell -ExecutionPolicy Bypass -File scripts\run_all.ps1
+```
+## 🧪 Opción manual (avanzada)
+Ejecuta los componentes en tres terminales separadas.
+
+Terminal 1 — API
+
+```
+uvicorn app.main:app --reload
+```
+
+
+Terminal 2 — Simulador
+
+```
+python -m integrations.ingest_simulator
+```
+
+Terminal 3 — Runner
+```
+python -m automation.runner
+```
+
+## 🌐 Uso de la API
+
+Una vez levantada la API, accede a la documentación interactiva:
+http://127.0.0.1:8000/docs
+
+
+Desde Swagger UI puedes realizar las siguientes acciones:
+
+- Crear tareas
+
+- Listar tareas
+
+- Consultar tareas por ID
+
+- Cerrar tareas
+
+- Consultar reportes de tareas vencidas
+
+---
+## 🔄 Estados de una tarea
+Las tareas pueden encontrarse en los siguientes estados:
+
+- PENDING → tarea activa
+
+- OVERDUE → tarea vencida detectada por el runner
+
+- DONE → tarea cerrada
+
+Campo overdue_at
+- Se completa solo cuando una tarea pasa a estado OVERDUE
+
+- Permanece null si la tarea nunca estuvo vencida
+
+---
+
+## 🗄️ Persistencia y logs
+
+📦 Base de datos
+
+Archivo: tasks.db
+
+Se crea automáticamente al ejecutar la API
+
+
+📄 Logs
+
+Ruta: automation/logs/
+
+Generados automáticamente por el runner
+
+---
+
+## ♻️ Reset del entorno (modo desarrollo)
+Permite reiniciar el entorno de pruebas eliminando la base de datos y los logs:
+
+
+```
+python scripts/reset_dev.py --force
+```
+
+Este comando no elimina el código ni el entorno virtual.
+
+---
+
+## 🧪 Flujo de demostración recomendado
+Ejecutar scripts/run_all.ps1
+
+- Abrir Swagger UI (/docs)
+
+- Observar creación automática de tareas
+
+- Esperar detección de tareas vencidas
+
+- Consultar reportes
+
+- Cerrar tareas manualmente
+
+---
+
+## 📝 Notas finales
+Este proyecto fue desarrollado con fines educativos y de portafolio, demostrando:
+
+- Diseño de backend
+
+- Automatización de procesos
+
+- Integración simulada
+
+- Uso correcto de FastAPI y SQLite
