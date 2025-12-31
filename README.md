@@ -1,6 +1,6 @@
 # Sistema automatizado de monitoreo de tareas
 
-Proyecto de portafolio por **Kirbyfet**.
+Proyecto de portafolio - **Kirbyfet**.
 
 Un sistema backend liviano que demuestra cómo las tareas operativas pueden ser ingeridas desde un sistema externo, monitoreadas automáticamente, escaladas cuando están vencidas y reportadas a través de una API REST.
 
