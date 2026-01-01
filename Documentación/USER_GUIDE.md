@@ -1,190 +1,190 @@
+# User Guide — Automated Task Monitoring System
 
-# Automated Task Monitoring System
+Esta guía describe cómo **ejecutar, usar y comprender** el sistema *Automated Task Monitoring System* desde el punto de vista del usuario y del evaluador técnico.
 
-Backend en Python para el monitoreo de tareas, desarrollado con **FastAPI** y **SQLite**, que integra un **simulador de eventos** y un **runner automático** para la gestión de tareas vencidas.
-
-## Estado del proyecto
-✅ Funcional (API + simulador + runner)
-
-La API REST, el simulador de eventos y el runner de automatización se encuentran completamente operativos y pueden ejecutarse localmente.
+Está pensada para:
+- Probar el sistema localmente
+- Entender el flujo completo de tareas
+- Observar el comportamiento del simulador y el runner
+- Evaluar el sistema sin necesidad de leer el código fuente
 
 ---
 
-## 🧠 Descripción general
-Este proyecto implementa un sistema backend que permite:
+## Objetivo del sistema
+
+El sistema permite:
+
 - Gestionar tareas mediante una API REST
 - Simular eventos provenientes de sistemas externos
-- Automatizar la detección de tareas vencidas
-- Generar logs y reportes de estado
-
-Está orientado a **demostrar arquitectura backend**, automatización y buenas prácticas en Python, con fines educativos y de portafolio.
-
----
-
-## 🧩 Componentes del sistema
-
-### 🔹 API (FastAPI)
-- CRUD de tareas
-- Persistencia en SQLite
-- Documentación interactiva con Swagger UI
-
-### 🔹 Simulador de integraciones
-- Simula un sistema externo que:
-  - crea tareas (`CREATE`)
-  - cierra tareas (`CLOSE`)
-- Se comunica con la API vía HTTP
-
-### 🔹 Runner de automatización
-- Ejecuta ciclos periódicos
-- Detecta tareas vencidas
-- Marca tareas como `OVERDUE`
-- Registra eventos en archivos de log
-- Escala prioridades cuando corresponde
+- Detectar automáticamente tareas vencidas
+- Registrar eventos y cambios de estado
+- Completar el ciclo de vida de una tarea de forma controlada
 
 ---
 
-## 📁 Estructura del proyecto
-automated-task-monitoring-system/
-├── app/
-├── automation/
-├── integrations/
-├── scripts/
-├── Documentación/
-├── README.md
-├── requirements.txt
-├── LICENSE
+## ⚙️ Requisitos previos
 
-
----
-
-## ⚙️ Requisitos
+Antes de comenzar, asegúrate de tener:
 
 - Python **3.10 o superior**
 - Git
-- Sistema operativo **Windows** (incluye scripts `.ps1`)
+- Sistema operativo **Windows**
+- Entorno virtual creado y dependencias instaladas
 
 ---
 
-## 🚀 Instalación
-## 1️⃣ Clonar el repositorio
+## 🚀 Puesta en marcha
 
- git clone https://github.com/KIRBYFET/automated-task-monitoring-system.git
- cd automated-task-monitoring-system
----
-## 2️⃣ Crear entorno virtual
+### Opción recomendada (automática)
 
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
----
-## 3️⃣ Instalar dependencias
-pip install -r requirements.txt
----
-## ▶️ Ejecución del sistema
+El proyecto incluye un script que levanta todos los componentes automáticamente:
 
-## Opción recomendada (automática) - Levanta API + simulador + runner en ventanas separadas:
+```
+powershell -ExecutionPolicy Bypass -File scripts/run_all.ps1
+```
 
-### powershell -ExecutionPolicy Bypass -File scripts\run_all.ps1
+Este script abre tres ventanas de terminal y ejecuta:
 
----
-## ▶️Opción manual (avanzada)
-## Levantar la API:
+- La API (FastAPI)
 
-uvicorn app.main:
-app --reload
+- El simulador de eventos
 
+- El runner de automatización
 
-## Ejecutar simulador:
+### Opción manual (avanzada)
+Ejecuta cada componente en una terminal distinta.
 
+Terminal 1 — API
 
-ython -m integrations.ingest_simulator
+```
+uvicorn app.main:app --reload
+```
 
-## Ejecutar runner:
+Terminal 2 — Simulador
 
+```
+python -m integrations.ingest_simulator
+```
 
+Terminal 3 — Runner
 
+```
 python -m automation.runner
-
+```
 ---
+
 ## 🌐 Uso de la API
-Documentación interactiva
+Una vez levantada la API, accede a la documentación interactiva:
 
-Una vez levantada la API:
+```
 http://127.0.0.1:8000/docs
+```
 
-Desde Swagger UI puedes:
+Desde Swagger UI puedes realizar las siguientes acciones:
 
--Crear tareas
+- Crear tareas
 
--Listar tareas
+- Listar tareas
 
--Consultar tareas por ID
+- Consultar tareas por ID
 
--Cerrar tareas
+- Cerrar tareas
 
--Consultar reportes de tareas vencidas
+- Consultar reportes de tareas vencidas
+
+
 
 ---
+
+## 🧪 Flujo de uso recomendado
+Este flujo permite observar el comportamiento completo del sistema.
+
+## 1️⃣ Creación de tareas
+- El simulador crea tareas automáticamente
+
+- Las tareas comienzan en estado PENDING
+
+- Se asigna una fecha de vencimiento (due_at)
+
+También es posible crear tareas manualmente desde Swagger UI.
+
+## 2️⃣ Detección de tareas vencidas
+El runner se ejecuta periódicamente
+
+- Detecta tareas cuyo vencimiento ha sido superado
+
+- Cambia su estado a OVERDUE
+
+- Registra el momento exacto en el campo overdue_at
+
+## 3️⃣ Consulta de reportes
+Desde la API es posible:
+
+- Listar todas las tareas
+
+- Filtrar tareas vencidas
+
+- Consultar tareas por ID
+
+- Revisar cambios de estado
+
+## 4️⃣ Cierre de tareas
+- Las tareas pueden cerrarse manualmente
+
+- Al cerrarse, pasan a estado DONE
+
+- Se completa el ciclo de vida de la tarea
+
 ## 🔄 Estados de una tarea
+Las tareas manejan los siguientes estados:
 
--PENDING → tarea activa
+- PENDING → tarea activa, dentro del plazo
 
--OVERDUE → tarea vencida detectada por el runner
+- OVERDUE → tarea vencida detectada automáticamente
 
--DONE → tarea cerrada
+- DONE → tarea cerrada manualmente
 
 Campo overdue_at
+- Se completa únicamente cuando una tarea pasa a estado OVERDUE
 
--Se completa solo cuando una tarea pasa a OVERDUE
-
--Permanece null si la tarea nunca estuvo vencida
-
----
-### 🗄️ Persistencia y logs
-Base de datos
-
--Archivo: tasks.db
-
--Se crea automáticamente al ejecutar la API
-
-Logs
-
--Ruta: automation/logs/
-
--Generados automáticamente por el runner
+- Permanece null si la tarea nunca estuvo vencida
 
 ---
-## ♻️ Reset del entorno (modo desarrollo)
-## Para borrar la base de datos y los logs y comenzar desde cero:
 
-python scripts\reset_dev.py --force
+## 🗄️ Persistencia y logs
+📦 Base de datos
+- Archivo: tasks.db
 
-Este comando no elimina el código ni el entorno virtual.
+- Se crea automáticamente al ejecutar la API
+
+- Contiene todas las tareas y sus estados
+
+📄 Logs del sistema
+- Ubicación: automation/logs/
+
+- Generados por el runner
+
+Registran:
+
+- detección de tareas vencidas
+
+- cambios de estado
+
+- ejecución de ciclos automáticos
 
 ---
-## 🧪 Flujo de demostración recomendado
 
--Ejecutar run_all.ps1
+## ♻️ Reinicio del entorno (modo desarrollo)
+Para reiniciar el sistema desde cero:
 
--Abrir Swagger UI (/docs)
+```
+python scripts/reset_dev.py --force
+```
 
--Observar creación automática de tareas
+Este comando:
 
--Esperar a que algunas pasen a estado OVERDUE
+- Elimina la base de datos
 
--Consultar reportes y estados
+- Borra los logs generados
 
--Cerrar tareas manualmente desde Swagger
-
-
----
-## 📝 Notas finales
-
-Este proyecto fue desarrollado con fines educativos y de portafolio, demostrando:
-
--diseño de backend
-
--automatización de procesos
-
--integración simulada
-
--uso correcto de FastAPI y SQLite
+- No elimina el código ni el entorno virtual
