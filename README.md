@@ -27,6 +27,41 @@ El objetivo principal del proyecto es **demostrar arquitectura backend, automati
 
 ---
 
+## 🎯 Alcance y no-alcance del proyecto
+
+Este proyecto fue diseñado con un **alcance claramente delimitado**, orientado a demostrar conceptos de **arquitectura backend, automatización e integración simulada**, y **no** como un sistema listo para producción.
+
+### ✅ Alcance del proyecto
+
+
+## El sistema cubre los siguientes aspectos:
+
+- Implementación de una API REST para gestión de tareas
+- Simulación de eventos provenientes de sistemas externos
+- Automatización de detección de tareas vencidas mediante un runner
+- Persistencia de datos en una base SQLite
+- Registro de eventos en archivos de log
+- Exposición de reportes mediante endpoints REST
+- Ejecución local y demostrable de extremo a extremo
+
+### 🚫 No-alcance del proyecto
+
+
+## De forma intencional, este proyecto **no incluye**:
+
+- ❌ Un sistema distribuido real (microservicios, colas, mensajería)
+- ❌ Autenticación o autorización de usuarios
+- ❌ Gestión de roles o permisos
+- ❌ Manejo de alta concurrencia o escalabilidad horizontal
+- ❌ Integraciones reales con sistemas externos
+- ❌ Configuración orientada a producción
+- ❌ Persistencia en bases de datos empresariales (PostgreSQL, MySQL, etc.)
+- ❌ Despliegue en entornos cloud o contenedores
+
+El **simulador de integraciones** reemplaza de manera controlada a sistemas externos reales, permitiendo reproducir flujos de negocio sin dependencias externas ni complejidad adicional.
+
+---
+
 ## 🧩 Componentes del sistema
 
 ### 🔹 API (FastAPI)
@@ -62,10 +97,78 @@ automated-task-monitoring-system/
 ├── scripts/
 ├── Documentación/
 │   └── USER_GUIDE.md
+│   └── ARCHITECTURE.md
+│   └── DATA_MODEL.md
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
 ```
+## 📚 Documentación del proyecto
+
+Este repositorio incluye documentación adicional que explica en detalle el uso, la arquitectura y el modelo de datos del sistema. Estos archivos están pensados tanto para usuarios como para revisores técnicos.
+
+---
+## 🏗️ Arquitectura del sistema (ARCHITECTURE.md)
+
+El archivo Documentación/ARCHITECTURE.md describe la arquitectura general del sistema.
+
+Detalla:
+
+- Separación por capas (API, automatización, integraciones)
+
+- Flujo de comunicación entre componentes
+
+- Rol del simulador como sistema externo
+
+- Rol del runner como proceso automático
+
+- Decisiones de diseño y responsabilidades de cada módulo
+
+Este documento está orientado a revisores técnicos y entrevistas, explicando el por qué de la estructura del proyecto.
+
+---
+
+## 🗃️ Modelo de Datos (DATA_MODEL.md)
+
+El archivo Documentación/DATA_MODEL.md documenta el modelo de datos utilizado por el sistema. 
+
+Incluye:
+
+- Entidad principal Task
+
+- Campos y tipos de datos
+
+- Estados posibles (PENDING, OVERDUE, DONE)
+
+- Campo overdue_at y su comportamiento
+
+- Relación entre fechas, estados y automatización
+
+Este documento permite comprender cómo se persisten las tareas y cómo el runner interactúa con los datos. 
+
+---
+
+## 📘 Guía de Usuario (USER_GUIDE.md)
+
+El archivo Documentación/USER_GUIDE.md contiene una guía paso a paso orientada al uso del sistema.
+
+Incluye:
+
+- Ejecución del proyecto
+
+- Flujo completo de demostración
+
+- Uso de Swagger UI
+
+- Estados de las tareas
+
+- Comportamiento del simulador y del runner
+
+- Reinicio del entorno de desarrollo
+
+Este documento está pensado para usuarios funcionales, evaluadores o personas que desean probar el sistema sin profundizar en el código.
+
+---
 
 ## ⚙️ Requisitos
 
@@ -74,6 +177,8 @@ automated-task-monitoring-system/
 - Git
 
 - Sistema operativo Windows (incluye scripts .ps1)
+
+---
 
 ## 🚀 Instalación
 ## 1️⃣ Clonar el repositorio
@@ -93,12 +198,25 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 ## 3️⃣ Instalar dependencias
-Instala todas las dependencias necesarias utilizando el archivo requirements.txt:
+El archivo `requirements.txt` contiene la lista de dependencias necesarias para ejecutar el proyecto.
 
+Su uso principal es garantizar un entorno reproducible, permitiendo instalar todas las librerías requeridas con un solo comando:
 
 ```
 pip install -r requirements.txt
 ```
+
+Incluye dependencias como:
+
+- FastAPI (API REST)
+
+- Uvicorn (servidor ASGI)
+
+- Librerías estándar para manejo de fechas, HTTP y automatización
+
+Este archivo es fundamental para levantar correctamente la API, el simulador y el runner.
+
+
 ## ▶️ Ejecución del sistema
 El sistema puede ejecutarse de forma automática o manual, dependiendo del nivel de control deseado.
 
@@ -169,16 +287,16 @@ Campo overdue_at
 
 📦 Base de datos
 
-Archivo: tasks.db
+- Archivo: tasks.db
 
-Se crea automáticamente al ejecutar la API
+- Se crea automáticamente al ejecutar la API
 
 
 📄 Logs
 
-Ruta: automation/logs/
+- Ruta: automation/logs/
 
-Generados automáticamente por el runner
+- Generados automáticamente por el runner
 
 ---
 
