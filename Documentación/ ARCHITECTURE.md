@@ -22,6 +22,7 @@
 
 ## Diagram (conceptual)
 
+```
 Client / External System Simulator
             |
             v
@@ -29,6 +30,8 @@ Client / External System Simulator
             ^
             |
      Automation Runner
+```
+
 
 ## Notes
 - This is intentionally documentation-first and lightweight.
@@ -60,6 +63,8 @@ Client / External System Simulator
 
 ## Diagrama (conceptual)
 
+
+```
 Cliente / Simulador de Sistema Externo
             |
             v
@@ -67,6 +72,7 @@ Cliente / Simulador de Sistema Externo
             ^
             |
      Ejecutor de Automatización
+```
 
 ## Notas
 - Este proyecto es intencionalmente *documentation-first* y liviano.
