@@ -35,6 +35,27 @@ Antes de comenzar, asegúrate de tener:
 
 ## 🚀Instalación & Puesta en marcha
 
+## Instalar dependencias 
+El archivo requirements.txt contiene la lista de dependencias necesarias para ejecutar el proyecto. 
+
+Su uso principal es garantizar un entorno reproducible, permitiendo instalar todas las librerías requeridas con un solo comando:
+
+```
+pip install -r requirements.txt
+```
+
+Incluye dependencias como: 
+
+- FastAPI (API REST) 
+- Uvicorn (servidor ASGI) 
+- Librerías estándar para manejo de fechas, HTTP y automatización 
+
+Este archivo es fundamental para levantar correctamente la API, el simulador y el runner.
+
+---
+
+## Puesta en marcha
+
 ### Opción recomendada (automática)
 
 El proyecto incluye un script que levanta todos los componentes automáticamente:
