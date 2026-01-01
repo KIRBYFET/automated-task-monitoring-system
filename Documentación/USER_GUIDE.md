@@ -33,7 +33,7 @@ Antes de comenzar, asegúrate de tener:
 
 ---
 
-## 🚀 Puesta en marcha
+## 🚀Instalación & Puesta en marcha
 
 ### Opción recomendada (automática)
 
