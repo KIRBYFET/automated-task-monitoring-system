@@ -26,7 +26,6 @@ A **Task** represents an operational activity monitored by automation.
 
 ---
 
-# spanish ver.
 
 # Modelo de Datos – Sistema de monitoreo automatizado de tareas
 
