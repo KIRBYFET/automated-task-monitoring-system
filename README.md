@@ -105,62 +105,9 @@ automated-task-monitoring-system/
 ```
 ## 📚 Documentación del proyecto
 
-- 📘 **[Guía de Usuario](Documentación/USER_GUIDE.md)**  
+## 📘 **[Guía de Usuario](Documentación/USER_GUIDE.md)**  
   Describe cómo ejecutar y utilizar el sistema, incluyendo el flujo completo de demostración.
-
-- 🏗️ **[Arquitectura del Sistema](Documentación/ARCHITECTURE.md)**  
-  Explica la arquitectura general, la separación de componentes y las decisiones de diseño.
-
-- 🗃️ **[Modelo de Datos](Documentación/DATA_MODEL.md)**  
-  Detalla las entidades, estados y la estructura de datos utilizada por el sistema.
-
----
-
-## 🏗️ Arquitectura del sistema (ARCHITECTURE.md)
-
-El archivo Documentación/ARCHITECTURE.md describe la arquitectura general del sistema.
-
-Detalla:
-
-- Separación por capas (API, automatización, integraciones)
-
-- Flujo de comunicación entre componentes
-
-- Rol del simulador como sistema externo
-
-- Rol del runner como proceso automático
-
-- Decisiones de diseño y responsabilidades de cada módulo
-
-Este documento está orientado a revisores técnicos y entrevistas, explicando el por qué de la estructura del proyecto.
-
----
-
-## 🗃️ Modelo de Datos (DATA_MODEL.md)
-
-El archivo Documentación/DATA_MODEL.md documenta el modelo de datos utilizado por el sistema. 
-
-Incluye:
-
-- Entidad principal Task
-
-- Campos y tipos de datos
-
-- Estados posibles (PENDING, OVERDUE, DONE)
-
-- Campo overdue_at y su comportamiento
-
-- Relación entre fechas, estados y automatización
-
-Este documento permite comprender cómo se persisten las tareas y cómo el runner interactúa con los datos. 
-
----
-
-## 📘 Guía de Usuario (USER_GUIDE.md)
-
-El archivo Documentación/USER_GUIDE.md contiene una guía paso a paso orientada al uso del sistema.
-
-Incluye:
+  Incluye:
 
 - Ejecución del proyecto
 
@@ -175,6 +122,39 @@ Incluye:
 - Reinicio del entorno de desarrollo
 
 Este documento está pensado para usuarios funcionales, evaluadores o personas que desean probar el sistema sin profundizar en el código.
+
+## 🏗️ **[Arquitectura del Sistema](Documentación/ARCHITECTURE.md)**  
+  Explica la arquitectura general, la separación de componentes y las decisiones de diseño.
+  Detalla:
+
+- Separación por capas (API, automatización, integraciones)
+
+- Flujo de comunicación entre componentes
+
+- Rol del simulador como sistema externo
+
+- Rol del runner como proceso automático
+
+- Decisiones de diseño y responsabilidades de cada módulo
+
+Este documento está orientado a revisores técnicos y entrevistas, explicando el por qué de la estructura del proyecto.
+
+
+## 🗃️ **[Modelo de Datos](Documentación/DATA_MODEL.md)**  
+  Detalla las entidades, estados y la estructura de datos utilizada por el sistema.
+  Incluye:
+
+  - Entidad principal Task
+
+  - Campos y tipos de datos
+
+  - Estados posibles (PENDING, OVERDUE, DONE)
+
+  - Campo overdue_at y su comportamiento
+
+  - Relación entre fechas, estados y automatización
+
+Este documento permite comprender cómo se persisten las tareas y cómo el runner interactúa con los datos. 
 
 ---
 
