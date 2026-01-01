@@ -36,6 +36,7 @@ Antes de comenzar, asegúrate de tener:
 ## 🚀Instalación & Puesta en marcha
 
 ## Instalar dependencias 
+
 El archivo requirements.txt contiene la lista de dependencias necesarias para ejecutar el proyecto. 
 
 Su uso principal es garantizar un entorno reproducible, permitiendo instalar todas las librerías requeridas con un solo comando:
