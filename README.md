@@ -105,9 +105,17 @@ automated-task-monitoring-system/
 ```
 ## 📚 Documentación del proyecto
 
-Este repositorio incluye documentación adicional que explica en detalle el uso, la arquitectura y el modelo de datos del sistema. Estos archivos están pensados tanto para usuarios como para revisores técnicos.
+- 📘 **[Guía de Usuario](Documentación/USER_GUIDE.md)**  
+  Describe cómo ejecutar y utilizar el sistema, incluyendo el flujo completo de demostración.
+
+- 🏗️ **[Arquitectura del Sistema](Documentación/ARCHITECTURE.md)**  
+  Explica la arquitectura general, la separación de componentes y las decisiones de diseño.
+
+- 🗃️ **[Modelo de Datos](Documentación/DATA_MODEL.md)**  
+  Detalla las entidades, estados y la estructura de datos utilizada por el sistema.
 
 ---
+
 ## 🏗️ Arquitectura del sistema (ARCHITECTURE.md)
 
 El archivo Documentación/ARCHITECTURE.md describe la arquitectura general del sistema.
@@ -177,6 +185,29 @@ Este documento está pensado para usuarios funcionales, evaluadores o personas q
 - Git
 
 - Sistema operativo Windows (incluye scripts .ps1)
+
+---
+
+## 🚀 Ejecución rápida
+Esta sección permite **levantar el sistema de forma inmediata** para probar su funcionamiento.  
+La explicación detallada del flujo, comportamiento y uso del sistema se encuentra documentada en la **[Guía de Usuario](Documentación/USER_GUIDE.md)**.
+
+---
+
+## Instalar dependencias:
+
+```
+pip install -r requirements.txt
+```
+
+## Ejecución:
+```
+powershell -ExecutionPolicy Bypass -File scripts/run_all.ps1
+```
+
+Luego accede a:
+
+API Docs: http://127.0.0.1:8000/docs
 
 ---
 
